@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/20 13:26:34 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/06/22 11:42:18 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/06/22 12:55:23 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@
 # include <string.h>
 # include <ctype.h>
 # include <stdlib.h>
+# include <signal.h>
 # include <sys/stat.h>
+# include <sys/wait.h>
 # include <sys/uio.h>
 # include <sys/types.h>
 # include <stdio.h>
