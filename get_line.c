@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ls.h                                            :+:      :+:    :+:   */
+/*   get_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/20 11:27:47 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/06/27 12:08:11 by mtacnet          ###   ########.fr       */
+/*   Created: 2017/06/27 10:46:43 by mtacnet           #+#    #+#             */
+/*   Updated: 2017/06/27 12:08:08 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
+#include "minishell.h"
 
-# include "./libft/libft.h"
+void	get_path(char **env)
+{
 
-/*
- ** MAIN FONCTIONS
-*/
+}
 
-//void					get_line(void);
+void	get_line(void)
+{
+	char	*line;
+	int		ret;
 
-#endif
+	line = NULL;
+	while (1)
+	{
+		ft_putstr("$> ");
+		while ((ret = get_next_line(0, &line) > 0))
+		{
+			printf("%s\n", line);
+			ft_putstr("$> ");
+		}
+	}
+}

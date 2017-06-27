@@ -6,13 +6,13 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/22 11:42:44 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/06/23 15:28:29 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/06/27 12:08:07 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void		view_tab(char **tab)
+/*static void		view_tab(char **tab)
 {
 	int		i;
 
@@ -22,7 +22,7 @@ static void		view_tab(char **tab)
 		ft_putendl(tab[i]);
 		i++;
 	}
-}
+}*/
 
 static char		**cpy_env(char **envp)
 {
@@ -45,12 +45,14 @@ static char		**cpy_env(char **envp)
 
 int		main(int argc, char **argv, char **envp)
 {
-	char	**tb_env;
+	char	**env;
 
-	if (argv == NULL)
+	if (!(argv))
 		ft_putnbr(argc);
-	tb_env = NULL;
-	tb_env = cpy_env(envp);
-	view_tab(tb_env);
+	env = NULL;
+	env = cpy_env(envp);
+	get_path(env);
+//	view_tab(env);
+//	get_line();
 	return (0);
 }
