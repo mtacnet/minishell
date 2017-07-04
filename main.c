@@ -45,12 +45,12 @@ static char		**cpy_env(char **environ)
 
 int		main(int argc, char **argv, char **environ)
 {
-	//char	**env;
+	char	**env;
 
+	env = NULL;
 	if (!(argv))
 		ft_putnbr(argc);
-	//env = NULL;
-	//env = cpy_env(environ);
-	view_tab(cpy_env(environ));
+	env = cpy_env(environ);
+	view_tab(env);
 	return (0);
 }
