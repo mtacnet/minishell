@@ -12,11 +12,7 @@
 
 #include "minishell.h"
 
-void	get_path(char **env)
-{
-
-}
-
+/*
 void	get_line(void)
 {
 	char	*line;
@@ -32,4 +28,4 @@ void	get_line(void)
 			ft_putstr("$> ");
 		}
 	}
-}
+}*/

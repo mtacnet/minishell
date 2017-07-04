@@ -12,47 +12,45 @@
 
 #include "minishell.h"
 
-/*static void		view_tab(char **tab)
+static void		view_tab(char **tab)
 {
 	int		i;
 
 	i = 0;
-	while (tab[i] && tab[i][0])
+	while (tab[i] && tab[i][0] != '\0')
 	{
 		ft_putendl(tab[i]);
 		i++;
 	}
-}*/
+}
 
-static char		**cpy_env(char **envp)
+static char		**cpy_env(char **environ)
 {
 	int		i;
 	char	**tab;
 
+	i = 0;
 	tab = NULL;
-	i = 0;
-	while (envp[i] != NULL)
+	while (environ[i] != '\0')
 		i++;
-	tab = ft_memalloc(sizeof(*tab) * i);
+	tab = ft_memalloc(sizeof(*tab) * i + 1);
 	i = 0;
-	while (envp[i] != NULL)
+	while (environ[i] != '\0')
 	{
-		tab[i] = envp[i];
+		tab[i] = environ[i];
 		i++;
 	}
 	return (tab);
 }
 
-int		main(int argc, char **argv, char **envp)
+int		main(int argc, char **argv, char **environ)
 {
-	char	**env;
+	//char	**env;
 
 	if (!(argv))
 		ft_putnbr(argc);
-	env = NULL;
-	env = cpy_env(envp);
-	get_path(env);
-//	view_tab(env);
-//	get_line();
+	//env = NULL;
+	//env = cpy_env(environ);
+	view_tab(cpy_env(environ));
 	return (0);
 }

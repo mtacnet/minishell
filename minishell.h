@@ -18,7 +18,4 @@
 /*
  ** MAIN FONCTIONS
 */
-
-//void					get_line(void);
-
 #endif
