@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-static void		view_tab(char **tab)
+/*static void		view_tab(char **tab)
 {
 	int		i;
 
@@ -22,7 +22,7 @@ static void		view_tab(char **tab)
 		ft_putendl(tab[i]);
 		i++;
 	}
-}
+}*/
 
 static char		**cpy_env(char **environ)
 {
@@ -51,6 +51,8 @@ int		main(int argc, char **argv, char **environ)
 	if (!(argv))
 		ft_putnbr(argc);
 	env = cpy_env(environ);
-	view_tab(env);
+//	view_tab(env);
+	get_path(env);
+//	get_line();
 	return (0);
 }

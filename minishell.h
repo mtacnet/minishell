@@ -15,7 +15,30 @@
 
 # include "./libft/libft.h"
 
+typedef struct		s_elem
+{
+	char			*name;
+	char			*content;
+	struct s_elem	*next;
+}					t_elem;
+
+/*
+ ** LIST FONCTIONS
+*/
+
+t_elem				*new_list(void);
+t_elem				*init_element(t_elem *element);
+t_elem				*push_elem(t_elem *lst, char *name, char *content);
+void				freelst(t_elem *lst);
+void				view_list(t_elem *lst);
+int					is_empty(t_elem *lst);
+
 /*
  ** MAIN FONCTIONS
 */
+
+void				get_path(char **env);
+void				ft_strtrunc(char *str, char *word);
+//void				get_line(void);
+
 #endif
