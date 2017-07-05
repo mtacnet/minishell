@@ -37,8 +37,8 @@ int					is_empty(t_elem *lst);
  ** MAIN FONCTIONS
 */
 
-void				get_path(char **env);
+void				get_elem(char **env, char *elem);
 void				ft_strtrunc(char *str, char *word);
-//void				get_line(void);
+void				get_line(void);
 
 #endif

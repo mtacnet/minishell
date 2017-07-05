@@ -33,7 +33,8 @@ static char		**cpy_env(char **environ)
 	tab = NULL;
 	while (environ[i] != '\0')
 		i++;
-	tab = ft_memalloc(sizeof(*tab) * i + 1);
+	if (!(tab = ft_memalloc(sizeof(*tab) * i + 1)))
+		exit(EXIT_FAILURE);
 	i = 0;
 	while (environ[i] != '\0')
 	{
@@ -52,7 +53,6 @@ int		main(int argc, char **argv, char **environ)
 		ft_putnbr(argc);
 	env = cpy_env(environ);
 //	view_tab(env);
-	get_path(env);
-//	get_line();
+	get_elem(env, "PATH=");
 	return (0);
 }

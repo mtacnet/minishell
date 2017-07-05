@@ -12,6 +12,11 @@
 
 #include "minishell.h"
 
+/*
+ ** list_path: Lecture du tableau renvoyé par ft_strsplit résultant de la 
+ ** découpe des différents paths d'accès aux exéc. situés dans la var "PATH="
+*/
+
 static void		list_path(char **path)
 {
 	t_elem		*lst_path;
@@ -24,10 +29,17 @@ static void		list_path(char **path)
 		lst_path = push_elem(lst_path, "PATH", path[i]);
 		i++;
 	}
-//	view_list(lst_path);
+	view_list(lst_path);
+	ft_putchar('\n');
+	get_line();
 }
 
-void	get_path(char **env)
+/*
+ ** get_elem: Prend en parametre une copie de l'env et le nom d'un element de
+ ** l'environnement (ex: PATH=)
+*/
+
+void	get_elem(char **env, char *elem)
 {
 	char		**tmp_tab;
 	size_t		name_len;
@@ -40,7 +52,7 @@ void	get_path(char **env)
 	name_len = 0;
 	while (env[i] && env[i][0] != '\0')
 	{
-		if (ft_strncmp(env[i], "PATH=", 4) == 0)
+		if (ft_strncmp(env[i], elem, 4) == 0)
 			j = i;
 		i++;
 	}
@@ -50,7 +62,11 @@ void	get_path(char **env)
 	list_path(tmp_tab);
 }
 
-/*void	get_line(void)
+/*
+ ** get_line: Affiche un prompt et retourne la chaine saisie par l'user.
+*/
+
+void	get_line(void)
 {
 	char	*line;
 	int		ret;
@@ -59,10 +75,10 @@ void	get_path(char **env)
 	while (1)
 	{
 		ft_putstr("$> ");
-		while ((ret = get_next_line(0, &line) > 0))
+		while ((ret = get_next_line(1, &line) > 0))
 		{
-			printf("%s\n", line);
+			ft_putendl(line);
 			ft_putstr("$> ");
 		}
 	}
-}*/
+}

@@ -31,7 +31,6 @@ void		view_list(t_elem *lst)
 {
 	while (lst != NULL)
 	{
-		ft_putendl(lst->name);
 		ft_putendl(lst->content);
 		lst = lst->next;
 	}
