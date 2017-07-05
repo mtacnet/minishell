@@ -40,5 +40,6 @@ int					is_empty(t_elem *lst);
 void				get_elem(char **env, char *elem);
 void				ft_strtrunc(char *str, char *word);
 void				get_line(void);
+void				view_tab(char **tab);
 
 #endif

@@ -63,21 +63,26 @@ void	get_elem(char **env, char *elem)
 }
 
 /*
- ** get_line: Affiche un prompt et retourne la chaine saisie par l'user.
+ ** get_line: Affiche un prompt puis split la chaine saisie par l'Users
+ ** Les mots sont placés dans le tableau tab_arg pour etre ensuite affiché.
 */
 
 void	get_line(void)
 {
 	char	*line;
+	char	**tab_arg;
 	int		ret;
 
+	tab_arg = NULL;
 	line = NULL;
 	while (1)
 	{
 		ft_putstr("$> ");
 		while ((ret = get_next_line(1, &line) > 0))
 		{
-			ft_putendl(line);
+			tab_arg = ft_strsplit(line, 040);
+			view_tab(tab_arg);
+			//ft_putendl(line);
 			ft_putstr("$> ");
 		}
 	}
