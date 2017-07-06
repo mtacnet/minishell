@@ -29,7 +29,8 @@ static void		list_path(char **path)
 		lst_path = push_elem(lst_path, "PATH", path[i]);
 		i++;
 	}
-	view_list(lst_path);
+	// FAIRE UN FREE DE **PATH
+	view_list(lst_path); //TEST Affichage de la liste de paths: OK LST REMPLIE
 	ft_putchar('\n');
 	get_line();
 }
@@ -37,6 +38,8 @@ static void		list_path(char **path)
 /*
  ** get_elem: Prend en parametre une copie de l'env et le nom d'un element de
  ** l'environnement (ex: PATH=)
+ ** Envoi a la fonction "list_path" un tableau contenant les différents éléments
+ ** récupérés dans la variable de d'environnement passé en parametre
 */
 
 void	get_elem(char **env, char *elem)
@@ -56,7 +59,7 @@ void	get_elem(char **env, char *elem)
 			j = i;
 		i++;
 	}
-	tmp_tab = ft_strsplit(env[j], ':');
+	tmp_tab = ft_strsplit(env[j], ':'); // Découpage des éléments (ici: "¨PATH=")
 	name_len = ft_strlen(tmp_tab[0]);
 	tmp_tab[0] = ft_strsub(tmp_tab[0], 5, name_len);
 	list_path(tmp_tab);
@@ -64,15 +67,19 @@ void	get_elem(char **env, char *elem)
 
 /*
  ** get_line: Affiche un prompt puis split la chaine saisie par l'Users
- ** Les mots sont placés dans le tableau tab_arg pour etre ensuite affiché.
+ ** Les mots sont d'abord placés dans le tableau "tab_arg"
+ ** Le tableau "tab_arg" est envoyé à la fonction "save_arg" qui va parcourir
+ ** "tab_arg" pour ajouter ses directement élements dans la liste "lst_arg" 
 */
 
 void	get_line(void)
 {
-	char	*line;
-	char	**tab_arg;
-	int		ret;
+	t_elem		*lst_arg;
+	char		*line;
+	char		**tab_arg;
+	int			ret;
 
+	lst_arg = new_list();
 	tab_arg = NULL;
 	line = NULL;
 	while (1)
@@ -81,9 +88,11 @@ void	get_line(void)
 		while ((ret = get_next_line(1, &line) > 0))
 		{
 			tab_arg = ft_strsplit(line, 040);
-			view_tab(tab_arg);
-			//ft_putendl(line);
+			save_arg(tab_arg, &lst_arg);
+			view_list(lst_arg); // TEST Affichage de la liste d'arg: OK LST REMPLIE
+			//view_tab(tab_arg); // Affichage du tableau rempli d'arguments.
 			ft_putstr("$> ");
+			//ft_putendl(line); // Affiche la cmd saisie par l'utilisateur
 		}
 	}
 }
