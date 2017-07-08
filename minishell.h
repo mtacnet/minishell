@@ -31,7 +31,6 @@ t_elem				*init_element(t_elem *element);
 t_elem				*push_elem(t_elem *lst, char *name, char *content);
 void				save_arg(char **tab_arg, t_elem **lst_arg);
 void				freelst(t_elem *lst);
-void				free_lst(t_elem *lst);
 void				view_list(t_elem *lst);
 int					is_empty(t_elem *lst);
 

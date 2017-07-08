@@ -36,20 +36,6 @@ void		view_list(t_elem *lst)
 	}
 }
 
-void		free_lst(t_elem *lst)
-{
-	t_elem	*tmp;
-
-	while (lst != NULL)
-	{
-		tmp = lst;
-		lst = lst->next;
-		free(tmp->name);
-		free(tmp->content);
-		free(tmp);
-	}
-}
-
 void		freelst(t_elem *lst)
 {
 	t_elem		*tmp;
