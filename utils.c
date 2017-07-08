@@ -1,5 +1,10 @@
 #include "minishell.h"
 
+/*
+ ** save_arg: Enregistre le contenu du tableau dans la liste "lst_arg" passée
+ ** en paramètre.
+*/
+
 void	save_arg(char **tab_arg, t_elem **lst_arg)
 {
 	int		i;
@@ -11,6 +16,10 @@ void	save_arg(char **tab_arg, t_elem **lst_arg)
 		i++;
 	}
 }
+
+/*
+ ** view_tab: Affiche le contenu du tableau passé en paramètre.
+*/
 
 void	view_tab(char **tab)
 {

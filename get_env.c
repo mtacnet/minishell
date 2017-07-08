@@ -12,6 +12,11 @@
 
 #include "minishell.h"
 
+/*
+ ** free_tab: Permet de libérer la mémoire allouée dynamiquement pour une
+ ** variable de type char ** et retourne un char ** NULL
+*/
+
 static char		**free_tab(char **tab)
 {
 	int		i;
