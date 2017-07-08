@@ -12,6 +12,23 @@
 
 #include "minishell.h"
 
+static char		**free_tab(char **tab)
+{
+	int		i;
+
+	i = 0;
+	while (tab[i] && tab[i][0] != '\0')
+		i++;
+	while (i >= 0)
+	{
+		free(tab[i]);
+		i--;
+	}
+	free(tab);
+	tab = NULL;
+	return (tab);
+}
+
 /*
  ** list_path: Lecture du tableau renvoyé par ft_strsplit résultant de la 
  ** découpe des différents paths d'accès aux exéc. situés dans la var "PATH="
@@ -27,12 +44,12 @@ static void		list_path(char **path)
 	while (path[i] && path[i][0] != '\0')
 	{
 		lst_path = push_elem(lst_path, "PATH", path[i]);
+		free(path[i]);
 		i++;
 	}
-	// FAIRE UN FREE DE **PATH
-	view_list(lst_path); //TEST Affichage de la liste de paths: OK LST REMPLIE
-	ft_putchar('\n');
-	get_line();
+	free(path);
+	path = NULL;
+	get_line(lst_path);
 }
 
 /*
@@ -62,6 +79,7 @@ void	get_elem(char **env, char *elem)
 	tmp_tab = ft_strsplit(env[j], ':'); // Découpage des éléments (ici: "¨PATH=")
 	name_len = ft_strlen(tmp_tab[0]);
 	tmp_tab[0] = ft_strsub(tmp_tab[0], 5, name_len);
+	//view_tab(tmp_tab);
 	list_path(tmp_tab);
 }
 
@@ -72,25 +90,27 @@ void	get_elem(char **env, char *elem)
  ** "tab_arg" pour ajouter ses directement élements dans la liste "lst_arg" 
 */
 
-void	get_line(void)
+void	get_line(t_elem *lst_path)
 {
-	t_elem		*lst_arg;
 	char		*line;
 	char		**tab_arg;
 	int			ret;
 
-	lst_arg = new_list();
 	tab_arg = NULL;
 	line = NULL;
+//	view_list(lst_path); //TEST Affichage de la liste de paths: OK LST REMPLIE
 	while (1)
 	{
 		ft_putstr("$> ");
 		while ((ret = get_next_line(1, &line) > 0))
 		{
 			tab_arg = ft_strsplit(line, 040);
-			save_arg(tab_arg, &lst_arg);
-			view_list(lst_arg); // TEST Affichage de la liste d'arg: OK LST REMPLIE
-			//view_tab(tab_arg); // Affichage du tableau rempli d'arguments.
+		//	view_tab(tab_arg); // Affichage du tableau rempli d'arguments.
+			view_list(lst_path);
+			recup_param(lst_path, tab_arg);
+			tab_arg = free_tab(tab_arg);
+			if (tab_arg != NULL)
+				ft_putendl("ERROR");
 			ft_putstr("$> ");
 			//ft_putendl(line); // Affiche la cmd saisie par l'utilisateur
 		}

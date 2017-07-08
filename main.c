@@ -12,18 +12,6 @@
 
 #include "minishell.h"
 
-/*static void		view_tab(char **tab)
-{
-	int		i;
-
-	i = 0;
-	while (tab[i] && tab[i][0] != '\0')
-	{
-		ft_putendl(tab[i]);
-		i++;
-	}
-}*/
-
 static char		**cpy_env(char **environ)
 {
 	int		i;
