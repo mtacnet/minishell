@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 10:46:43 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/06/27 12:08:08 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/10 12:50:21 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static char		**free_tab(char **tab)
  ** découpe des différents paths d'accès aux exéc. situés dans la var "PATH="
 */
 
-static void		list_path(char **path)
+static void		list_path(char **path, char **env)
 {
 	t_elem		*lst_path;
 	int			i;
@@ -54,7 +54,7 @@ static void		list_path(char **path)
 	}
 	free(path);
 	path = NULL;
-	get_line(lst_path);
+	get_line(lst_path, env);
 }
 
 /*
@@ -85,7 +85,7 @@ void	get_elem(char **env, char *elem)
 	name_len = ft_strlen(tmp_tab[0]);
 	tmp_tab[0] = ft_strsub(tmp_tab[0], 5, name_len);
 	//view_tab(tmp_tab);
-	list_path(tmp_tab);
+	list_path(tmp_tab, env);
 }
 
 /*
@@ -95,7 +95,7 @@ void	get_elem(char **env, char *elem)
  ** "tab_arg" pour ajouter ses directement élements dans la liste "lst_arg" 
 */
 
-void	get_line(t_elem *lst_path)
+void	get_line(t_elem *lst_path, char **env)
 {
 	char		*line;
 	char		**tab_arg;
@@ -112,7 +112,7 @@ void	get_line(t_elem *lst_path)
 			tab_arg = ft_strsplit(line, 040);
 		//	view_tab(tab_arg); // Affichage du tableau rempli d'arguments.
 			view_list(lst_path);
-			recup_param(lst_path, tab_arg);
+			recup_param(lst_path, tab_arg, env);
 			tab_arg = free_tab(tab_arg);
 			if (tab_arg != NULL)
 				ft_putendl("ERROR");

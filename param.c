@@ -43,7 +43,7 @@ static t_elem		*cpy_lst(t_elem **path_concat, t_elem *lst_path)
  ** avec la commande saisie par l'utilisateur dans la fonction get_line.
 */
 
-void	recup_param(t_elem *lst_path, char **tab_arg)
+void	recup_param(t_elem *lst_path, char **tab_arg, char **env)
 {
 	t_elem		*path_concat;
 	int		path_access;
@@ -56,9 +56,12 @@ void	recup_param(t_elem *lst_path, char **tab_arg)
 		path_concat->content = ft_strjoin(path_concat->content, "/");
 		path_concat->content = ft_strjoin(path_concat->content, tab_arg[0]);
 		ft_putendl(path_concat->content);
+		// FAIRE GESTION D'ERREUR via fonction check_access
 		path_access = check_access(path_concat->content);
-		ft_putnbr(path_access);
+		ft_putnbr(path_access); //retourne la valeur de ACCESS associé au PATH
 		ft_putendl("");
+		if (path_access == 1)
+			if_path(path_concat->content, tab_arg, env);
 		path_concat = path_concat->next;
 	}
 	freelst(path_concat);

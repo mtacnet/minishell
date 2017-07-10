@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 11:27:47 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/06/27 12:08:11 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/10 12:50:51 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int					is_empty(t_elem *lst);
 
 void				get_elem(char **env, char *elem);
 void				ft_strtrunc(char *str, char *word);
-void				get_line(t_elem *lst_path);
+void				get_line(t_elem *lst_path, char **env);
 void				view_tab(char **tab);
-void				recup_param(t_elem *lst_path, char **tab_arg);
-
+void				recup_param(t_elem *lst_path, char **tab_arg, char **env);
+vois				if_path(char *valid_path, char **tab_arg, char **env);
 #endif

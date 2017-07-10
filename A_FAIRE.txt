@@ -1,0 +1,20 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    A_FAIRE.txt                                        :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/07/10 11:59:24 by mtacnet           #+#    #+#              #
+#    Updated: 2017/07/10 12:02:14 by mtacnet          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+1) Si jamais minishell est lancé avec: "env -i ./minishell" alors créer un
+environnement par défaut.
+
+- (Pour voir l'environnement par défaut faire: "env -i sh" puis "env")
+
+2) /!\ Gestion des leaks /!\
+
+
