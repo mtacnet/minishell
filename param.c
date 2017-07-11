@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   param.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/07/11 13:17:42 by mtacnet           #+#    #+#             */
+/*   Updated: 2017/07/11 13:23:46 by mtacnet          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 /*
@@ -46,7 +58,7 @@ static t_elem		*cpy_lst(t_elem **path_concat, t_elem *lst_path)
 void	recup_param(t_elem *lst_path, char **tab_arg, char **env)
 {
 	t_elem		*path_concat;
-	int		path_access;
+	int			path_access;
 
 	path_concat = new_list();
 	path_concat = cpy_lst(&path_concat, lst_path);
@@ -55,11 +67,11 @@ void	recup_param(t_elem *lst_path, char **tab_arg, char **env)
 	{
 		path_concat->content = ft_strjoin(path_concat->content, "/");
 		path_concat->content = ft_strjoin(path_concat->content, tab_arg[0]);
-		ft_putendl(path_concat->content);
+	//	ft_putendl(path_concat->content);
 		// FAIRE GESTION D'ERREUR via fonction check_access
 		path_access = check_access(path_concat->content);
-		ft_putnbr(path_access); //retourne la valeur de ACCESS associé au PATH
-		ft_putendl("");
+	//	ft_putnbr(path_access); //retourne la valeur de ACCESS associé au PATH
+	//	ft_putendl("");
 		if (path_access == 1)
 			if_path(path_concat->content, tab_arg, env);
 		path_concat = path_concat->next;

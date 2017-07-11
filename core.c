@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/10 12:34:51 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/10 13:25:42 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/11 13:30:41 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,21 @@
 void	if_path(char *valid_path, char **tab_arg, char **env)
 {
 	pid_t		child_pid;
-	
+	int			status;
+
 	child_pid = fork();
-	if (child_pid == 0)
+	if (child_pid == -1)
 	{
-		
+		ft_putstr_fd("ERROR WITH CHIELD PROCESSUS", 2);
+		exit(EXIT_FAILURE);
+	}
+	else if (child_pid == 0)
+	{
+		execve(valid_path, tab_arg, env);
+		exit(0);
 	}
 	else
 	{
-
+		waitpid(child_pid, &status, WUNTRACED);
 	}
 }
