@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 13:17:42 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/11 13:23:46 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/11 13:58:35 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static t_elem		*cpy_lst(t_elem **path_concat, t_elem *lst_path)
 }
 
 /*
+ **						/!\ FAIRE LA GESTION D'ERREUR /!\						
  ** recup_param: Fait une copie de la liste chainée 'lst_path' dans la liste
  ** path_concat qui servira ensuite a concaténer les paths contenus dans tab_arg
  ** avec la commande saisie par l'utilisateur dans la fonction get_line.
@@ -59,21 +60,33 @@ void	recup_param(t_elem *lst_path, char **tab_arg, char **env)
 {
 	t_elem		*path_concat;
 	int			path_access;
+	int			i;
 
+	i = 0;
 	path_concat = new_list();
 	path_concat = cpy_lst(&path_concat, lst_path);
 	path_access = 0;
 	while (path_concat != NULL)
 	{
-		path_concat->content = ft_strjoin(path_concat->content, "/");
-		path_concat->content = ft_strjoin(path_concat->content, tab_arg[0]);
+		if (!(ft_strchr(tab_arg[0], '/')))
+		{
+			path_concat->content = ft_strjoin(path_concat->content, "/");
+			path_concat->content = ft_strjoin(path_concat->content, tab_arg[0]);
+			path_access = check_access(path_concat->content);
+			if (path_access == 1)
+				if_path(path_concat->content, tab_arg, env);
+		}
+		else if (i == 0)
+		{
+			path_access = check_access(tab_arg[0]);
+			if (path_access == 1)
+				if_path(tab_arg[0], tab_arg, env);
+		}
 	//	ft_putendl(path_concat->content);
 		// FAIRE GESTION D'ERREUR via fonction check_access
-		path_access = check_access(path_concat->content);
 	//	ft_putnbr(path_access); //retourne la valeur de ACCESS associé au PATH
 	//	ft_putendl("");
-		if (path_access == 1)
-			if_path(path_concat->content, tab_arg, env);
+		i++;
 		path_concat = path_concat->next;
 	}
 	freelst(path_concat);
