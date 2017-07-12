@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_env.c                                         :+:      :+:    :+:   */
+/*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 10:46:43 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/12 11:47:27 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/12 14:49:35 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*
- ** free_tab: Permet de libérer la mémoire allouée dynamiquement pour une
- ** variable de type char ** et retourne un char ** NULL
+** free_tab: Permet de libérer la mémoire allouée dynamiquement pour une
+** variable de type char ** et retourne un char ** NULL
 */
 
 static char		**free_tab(char **tab)
@@ -35,8 +35,8 @@ static char		**free_tab(char **tab)
 }
 
 /*
- ** list_path: Lecture du tableau renvoyé par ft_strsplit résultant de la 
- ** découpe des différents paths d'accès aux exéc. situés dans la var "PATH="
+** list_path: Lecture du tableau renvoyé par ft_strsplit résultant de la
+** découpe des différents paths d'accès aux exéc. situés dans la var "PATH="
 */
 
 static void		list_path(char **path, char **env)
@@ -58,13 +58,13 @@ static void		list_path(char **path, char **env)
 }
 
 /*
- ** get_elem: Prend en parametre une copie de l'env et le nom d'un element de
- ** l'environnement (ex: PATH=)
- ** Envoi a la fonction "list_path" un tableau contenant les différents éléments
- ** récupérés dans la variable de d'environnement passé en parametre
+** get_elem: Prend en parametre une copie de l'env et le nom d'un element de
+** l'environnement (ex: PATH=)
+** Envoi a la fonction "list_path" un tableau contenant les différents éléments
+** récupérés dans la variable de d'environnement passé en parametre
 */
 
-void	get_elem(char **env, char *elem)
+void			get_elem(char **env, char *elem)
 {
 	char		**tmp_tab;
 	size_t		name_len;
@@ -89,13 +89,13 @@ void	get_elem(char **env, char *elem)
 }
 
 /*
- ** get_line: Affiche un prompt puis split la chaine saisie par l'Users
- ** Les mots sont d'abord placés dans le tableau "tab_arg"
- ** Le tableau "tab_arg" est envoyé à la fonction "save_arg" qui va parcourir
- ** "tab_arg" pour ajouter ses directement élements dans la liste "lst_arg" 
+** get_line: Affiche un prompt puis split la chaine saisie par l'Users
+** Les mots sont d'abord placés dans le tableau "tab_arg"
+** Le tableau "tab_arg" est envoyé à la fonction "save_arg" qui va parcourir
+** "tab_arg" pour ajouter ses directement élements dans la liste "lst_arg"
 */
 
-void	get_line(t_elem *lst_path, char **env)
+void			get_line(t_elem *lst_path, char **env)
 {
 	char		*line;
 	char		**tab_arg;
@@ -112,6 +112,7 @@ void	get_line(t_elem *lst_path, char **env)
 			tab_arg = ft_strsplit(line, 040);
 		//	view_tab(tab_arg); // Affichage du tableau rempli d'arguments.
 		//	view_list(lst_path);
+			parsing_cmd(tab_arg[0], env);
 			recup_param(lst_path, tab_arg, env);
 			tab_arg = free_tab(tab_arg);
 			if (tab_arg != NULL)

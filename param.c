@@ -6,17 +6,17 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 13:17:42 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/12 11:47:27 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/12 14:49:32 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*
- ** check_access: Vérifie que le pathname passé en paramètre est valide via la
- ** fonction ACCESS. Si le pathname est valide on vérifie si il est exécutable
- ** Si exec alors return 1 Sinon return 0
- */
+** check_access: Vérifie que le pathname passé en paramètre est valide via la
+** fonction ACCESS. Si le pathname est valide on vérifie si il est exécutable
+** Si exec alors return 1 Sinon return 0
+*/
 
 static int		check_access(char *path_concat)
 {
@@ -35,11 +35,11 @@ static int		check_access(char *path_concat)
 }
 
 /*
- ** cpy_lst: Fait une copie des éléments de lst_path dans la liste path_concat
- ** puis retourne la liste path_concat.
- */
+** cpy_lst: Fait une copie des éléments de lst_path dans la liste path_concat
+** puis retourne la liste path_concat.
+*/
 
-static t_elem		*cpy_lst(t_elem **path_concat, t_elem *lst_path)
+static t_elem	*cpy_lst(t_elem **path_concat, t_elem *lst_path)
 {
 	while (lst_path != NULL)
 	{
@@ -50,17 +50,17 @@ static t_elem		*cpy_lst(t_elem **path_concat, t_elem *lst_path)
 }
 
 /*
- **						/!\ FAIRE LA GESTION D'ERREUR /!\						
- ** recup_param: Fait une copie de la liste chainée 'lst_path' dans la liste
- ** path_concat qui servira ensuite a concaténer les paths contenus dans tab_arg
- ** avec la commande saisie par l'utilisateur dans la fonction get_line.
- */
+**						/!\ FAIRE LA GESTION D'ERREUR /!\
+** recup_param: Fait une copie de la liste chainée 'lst_path' dans la liste
+** path_concat qui servira ensuite a concaténer les paths contenus dans tab_arg
+** avec la commande saisie par l'utilisateur dans la fonction get_line.
+*/
 
 static void		process_path(t_elem *path_concat, char **tab_arg, char **env,
 		int i)
 {
 	int		path_access;
-	
+
 	path_access = 0;
 	if (!(ft_strchr(tab_arg[0], '/')))
 	{

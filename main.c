@@ -6,15 +6,15 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/22 11:42:44 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/12 12:49:16 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/12 14:49:29 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*
- ** cpy_env: Procéde a la copie de l'environnement actuel dans un char **.
- ** La fonction retourne le tableau rempli.
+** cpy_env: Procéde a la copie de l'environnement actuel dans un char **.
+** La fonction retourne le tableau rempli.
 */
 
 static char		**cpy_env(char **environ)
@@ -37,7 +37,7 @@ static char		**cpy_env(char **environ)
 	return (tab);
 }
 
-int		main(int argc, char **argv, char **environ)
+int				main(int argc, char **argv, char **environ)
 {
 	char	**env;
 

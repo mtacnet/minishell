@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/12 11:37:08 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/12 11:37:09 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/12 14:49:09 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@ int			is_empty(t_elem *lst)
 		return (0);
 }
 
+void		init_struct_cmd(t_cmd *cmd)
+{
+	cmd->c_env = 0;
+	cmd->c_setenv = 0;
+	cmd->c_unset = 0;
+	cmd->c_cd = 0;
+	cmd->c_echo = 0;
+	cmd->c_exit = 0;
+}
+
 t_elem		*init_element(t_elem *element)
 {
 	element = (t_elem*)malloc(sizeof(t_elem));
@@ -37,15 +47,6 @@ t_elem		*init_element(t_elem *element)
 	element->content = NULL;
 	element->next = NULL;
 	return (element);
-}
-
-void		view_list(t_elem *lst)
-{
-	while (lst != NULL)
-	{
-		ft_putendl(lst->content);
-		lst = lst->next;
-	}
 }
 
 void		freelst(t_elem *lst)
