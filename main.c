@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/22 11:42:44 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/10 12:47:41 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/12 12:49:16 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static char		**cpy_env(char **environ)
 	tab = NULL;
 	while (environ[i] != '\0')
 		i++;
-	if (!(tab = ft_memalloc(sizeof(*tab) * i + 1)))
+	if (!(tab = ft_memalloc(sizeof(*tab) * (i + 1))))
 		exit(EXIT_FAILURE);
 	i = 0;
 	while (environ[i] != '\0')
