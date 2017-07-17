@@ -97,12 +97,10 @@ void			get_elem(char **env, char *elem)
 
 void			get_line(t_elem *lst_path, char **env)
 {
-	t_cmd		cmd;
 	char		*line;
 	char		**tab_arg;
 	int			ret;
 	
-	init_struct_cmd(&cmd);
 	tab_arg = NULL;
 	line = NULL;
 //	view_list(lst_path); //TEST Affichage de la liste de paths: OK LST REMPLIE
@@ -111,15 +109,17 @@ void			get_line(t_elem *lst_path, char **env)
 		ft_putstr("$> ");
 		while ((ret = get_next_line(1, &line) > 0))
 		{
+			//FAIRE VERIF SI LINE EST NULL OU VIDE EtC.
 			tab_arg = ft_strsplit(line, 040);
 		//	view_tab(tab_arg); // Affichage du tableau rempli d'arguments.
 		//	view_list(lst_path);
-			parsing_cmd(tab_arg[0], &cmd); //Set a 1 les values de cmd
-			check_cmd(&cmd, env);
-			recup_param(lst_path, tab_arg, env);
-			tab_arg = free_tab(tab_arg);
-			if (tab_arg != NULL)
-				ft_putendl("ERROR");
+			if (check_cmd(parsing_cmd(tab_arg[0]), env) == 0)
+			{
+				recup_param(lst_path, tab_arg, env);
+				tab_arg = free_tab(tab_arg);
+				if (tab_arg != NULL)
+					ft_putendl("ERROR");
+			}
 			ft_putstr("$> ");
 			//ft_putendl(line); // Affiche la cmd saisie par l'utilisateur
 		}

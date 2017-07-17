@@ -15,16 +15,6 @@
 
 # include "./libft/libft.h"
 
-typedef struct		s_cmd
-{
-	int				c_env;
-	int				c_setenv;
-	int				c_unset;
-	int				c_cd;
-	int				c_echo;
-	int				c_exit;
-}					t_cmd;
-
 typedef struct		s_elem
 {
 	char			*name;
@@ -39,9 +29,9 @@ typedef struct		s_elem
 t_elem				*new_list(void);
 t_elem				*init_element(t_elem *element);
 t_elem				*push_elem(t_elem *lst, char *name, char *content);
+t_elem				*push_back(t_elem *lst, char *name, char *content);
 void				save_arg(char **tab_arg, t_elem **lst_arg);
 void				freelst(t_elem *lst);
-void				init_struct_cmd(t_cmd *cmd);
 void				view_list(t_elem *lst);
 int					is_empty(t_elem *lst);
 
@@ -55,6 +45,16 @@ void				get_line(t_elem *lst_path, char **env);
 void				view_tab(char **tab);
 void				recup_param(t_elem *lst_path, char **tab_arg, char **env);
 void				if_path(char *valid_path, char **tab_arg, char **env);
-void				parsing_cmd(char *command, t_cmd *cmd);
-void				check_cmd(t_cmd *cmd, char **env);
+int					parsing_cmd(char *command);
+int					check_cmd(int value, char **env);
+
+/*
+** PROCESS_BUILTINS
+*/
+
+void				process_env(char **env, int value);
+void				process_cd(char **env);
+void				process_echo(char **env);
+void				process_exit(char **env);
+
 #endif

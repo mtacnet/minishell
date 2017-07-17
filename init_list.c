@@ -25,16 +25,6 @@ int			is_empty(t_elem *lst)
 		return (0);
 }
 
-void		init_struct_cmd(t_cmd *cmd)
-{
-	cmd->c_env = 0;
-	cmd->c_setenv = 0;
-	cmd->c_unset = 0;
-	cmd->c_cd = 0;
-	cmd->c_echo = 0;
-	cmd->c_exit = 0;
-}
-
 t_elem		*init_element(t_elem *element)
 {
 	element = (t_elem*)malloc(sizeof(t_elem));

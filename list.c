@@ -38,3 +38,21 @@ t_elem		*push_elem(t_elem *lst, char *name, char *content)
 	element->next = lst;
 	return (head);
 }
+
+t_elem		*push_back(t_elem *lst, char *name, char *content)
+{
+	t_elem		*element;
+	t_elem		*tmp;
+
+	element = NULL;
+	element = init_element(element);
+	element->name = ft_strdup(name);
+	element->content = ft_strdup(content);
+	if (is_empty(lst))
+		return (element);
+	tmp = lst;
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = element;
+	return (lst);
+}

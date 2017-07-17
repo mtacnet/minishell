@@ -58,39 +58,44 @@ void	view_tab(char **tab)
 	}
 }
 
-/*
-** check_cmd: Si la value checkée est a 1 alors redirection sur la fonction
-** correspondante.
-*/
-
-void	check_cmd(t_cmd *cmd, char **env)
+int		check_cmd(int value, char **env)
 {
-	if (cmd->c_env == 1)
-	if (cmd->c_setenv == 1)
-	if (cmd->c_unset== 1)
-	if (cmd->c_cd == 1)
-	if (cmd->c_echo == 1)
-	if (cmd->c_exit == 1)
+	if (value != 0)
+	{
+		if (value == 1 || value == 2 || value == 3)
+			process_env(env, value);
+		if (value == 4)
+			process_cd(env);
+		if (value == 5)
+			process_echo(env);
+		if (value == 6)
+			process_exit(env);
+		ft_putchar('\n');
+		return (1);
+	}
+	else
+		return (0);
 }
 
 /*
 ** parsing_cmd: Parse la string 'command' et vérifie si la command passée par
-** l'user correspond a un builtin, si c'est le cas la valeur correspondant
-** a la commande saisie par l'user est passée a 1.
+** l'user correspond a un builtin, si c'est le cas une valeur comprise entre 0
+** et 6 est retournée pour ensuitre etre analysée par la fonction check_cmd.
 */
-
-void	parsing_cmd(char *command, t_cmd *cmd)
+int		parsing_cmd(char *command)
 {
 	if (ft_strcmp(command, "env") == 0)
-		cmd->c_env = 1;
+		return (1);
 	else if (ft_strcmp(command, "setenv") == 0)
-		cmd->c_setenv = 1;
+		return (2);
 	else if (ft_strcmp(command, "unsetenv") == 0)
-		cmd->c_unset = 1;
+		return (3);
 	else if (ft_strcmp(command, "cd") == 0)
-		cmd->c_cd = 1;
+		return (4);
 	else if (ft_strcmp(command, "echo") == 0)
-		cmd->c_echo = 1;
+		return (5);
 	else if (ft_strcmp(command, "exit") == 0)
-		cmd->c_exit = 1;
+		return (6);
+	else
+		return (0);
 }
