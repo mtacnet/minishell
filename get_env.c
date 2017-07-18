@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 10:46:43 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/12 17:13:29 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/18 11:19:26 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ void			get_line(t_elem *lst_path, char **env)
 	char		*line;
 	char		**tab_arg;
 	int			ret;
-	
+
 	tab_arg = NULL;
 	line = NULL;
 //	view_list(lst_path); //TEST Affichage de la liste de paths: OK LST REMPLIE

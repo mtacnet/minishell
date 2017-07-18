@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/12 11:36:58 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/12 17:15:09 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/18 11:30:24 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,11 @@ void	view_tab(char **tab)
 	}
 }
 
+/*
+** check_cmd: Vérifie la valeur passée en paramètre et redirige vers la fonction
+** correspond a la commande saisie par l'utilisateur.
+*/
+
 int		check_cmd(int value, char **env)
 {
 	if (value != 0)
@@ -70,7 +75,6 @@ int		check_cmd(int value, char **env)
 			process_echo(env);
 		if (value == 6)
 			process_exit(env);
-		ft_putchar('\n');
 		return (1);
 	}
 	else
@@ -82,6 +86,7 @@ int		check_cmd(int value, char **env)
 ** l'user correspond a un builtin, si c'est le cas une valeur comprise entre 0
 ** et 6 est retournée pour ensuitre etre analysée par la fonction check_cmd.
 */
+
 int		parsing_cmd(char *command)
 {
 	if (ft_strcmp(command, "env") == 0)

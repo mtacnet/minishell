@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/11 13:17:42 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/12 14:49:32 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/18 11:21:20 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static t_elem	*cpy_lst(t_elem **path_concat, t_elem *lst_path)
 {
 	while (lst_path != NULL)
 	{
-		*path_concat = push_elem(*path_concat, lst_path->name, lst_path->content);
+		*path_concat = push_elem(*path_concat, lst_path->name,
+				lst_path->content);
 		lst_path = lst_path->next;
 	}
 	return (*path_concat);

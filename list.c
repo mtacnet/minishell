@@ -6,11 +6,23 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/12 14:30:47 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/12 14:49:05 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/18 11:28:08 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void		tab_to_list(t_elem **lst_env, char **env)
+{
+	int		i;
+
+	i = 0;
+	while (env[i] && env[i][0] != '\0')
+	{
+		*lst_env = push_elem(*lst_env, "ENV", env[i]);
+		i++;
+	}
+}
 
 t_elem		*push_elem(t_elem *lst, char *name, char *content)
 {
