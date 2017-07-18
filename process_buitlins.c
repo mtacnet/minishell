@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 11:18:07 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/18 13:07:08 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/18 17:50:16 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@ static void		process_f_env(t_elem *lst_env)
 
 static void		process_setenv(t_elem *lst_env, char **tab_arg)
 {
+	//VERIFIER QUE LA VAR PASSEE EN CMD PAR L'USER N'EXISTE PAS, SI ELLE EXISTE
+	//ALORS L`A MODIFIER A PARTIR DU "=" SINON AJOUTER LA VALEUR A L'ENV
 	view_list(lst_env);
 	ft_putchar('\n');
-	//VERIFIER QUE LA VAR PASSEE EN CMD PAR L'USER N'EXISTE PAS, SI ELLE EXISTE
-	//ALORS LA MODIFIER A PARTIR DU "="
-	view_tab(tab_arg);
+	if (verif_tab(tab_arg) == 1)
+		tab_arg[1] = ft_strjoin(tab_arg[1], "=");
+	ft_putchar('\n');
+	verif_arg(tab_arg);
+	//	verif_list(lst_env, tab_arg);
 }
 
 static void		process_unset(t_elem *lst_env)
