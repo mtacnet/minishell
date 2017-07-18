@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/12 11:36:58 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/18 11:30:24 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/18 13:07:08 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ void	view_tab(char **tab)
 ** correspond a la commande saisie par l'utilisateur.
 */
 
-int		check_cmd(int value, char **env)
+int		check_cmd(int value, char **env, char **tab_arg)
 {
 	if (value != 0)
 	{
 		if (value == 1 || value == 2 || value == 3)
-			process_env(env, value);
+			process_env(env, value, tab_arg);
 		if (value == 4)
 			process_cd(env);
 		if (value == 5)

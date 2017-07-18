@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 10:46:43 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/18 11:19:26 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/18 13:07:08 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ void			get_line(t_elem *lst_path, char **env)
 			tab_arg = ft_strsplit(line, 040);
 		//	view_tab(tab_arg); // Affichage du tableau rempli d'arguments.
 		//	view_list(lst_path);
-			if (check_cmd(parsing_cmd(tab_arg[0]), env) == 0)
+			if (check_cmd(parsing_cmd(tab_arg[0]), env, tab_arg) == 0)
 			{
 				recup_param(lst_path, tab_arg, env);
 				tab_arg = free_tab(tab_arg);
