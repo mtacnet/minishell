@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 11:27:47 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/19 14:04:15 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/19 16:23:44 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int					parsing_cmd(char *command);
 int					check_cmd(int value, t_elem *lst_env, char **tab_arg);
 int					verif_list(t_elem *lst, char *tab_arg);
 int					verif_tab(char *tab_arg);
+int					modif_list(t_elem *lst, char *arg);
+
 /*
 ** PROCESS_BUILTINS
 */

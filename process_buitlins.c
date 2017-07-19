@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 11:18:07 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/19 14:08:01 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/19 16:24:35 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ static void		process_setenv(t_elem *lst_env, char **tab_arg)
 	int		i;
 
 	i = 1;
-	//VERIFIER QUE LA VAR PASSEE EN CMD PAR L'USER N'EXISTE PAS, SI ELLE EXISTE
-	//ALORS L`A MODIFIER A PARTIR DU "=" SINON AJOUTER LA VALEUR A L'ENV
 	while (tab_arg[i] && tab_arg[i][0] != '\0')
 	{
 		if (verif_tab(tab_arg[i]) == 1)
@@ -32,12 +30,21 @@ static void		process_setenv(t_elem *lst_env, char **tab_arg)
 			lst_env = push_back(lst_env, "ENV", tab_arg[i]);
 		i++;
 	}
-	view_list(lst_env);
 }
 
-static void		process_unset(t_elem *lst_env)
+static void		process_unset(t_elem *lst_env, char **tab_arg)
 {
+	int		i;
+
+	i = 1;
+	while (tab_arg[i] && tab_arg[i][0] != '\0')
+	{
+		if (modif_list(lst_env, tab_arg[i]) == 1)
+			lst_env = DELETE_ELEM;
+		i++;
+	}
 	view_list(lst_env);
+
 }
 
 void			process_cd(t_elem *lst_env)
@@ -62,5 +69,5 @@ void			process_env(t_elem *lst_env, int value, char **tab_arg)
 	else if (value == 2)
 		process_setenv(lst_env, tab_arg);
 	else if (value == 3)
-		process_unset(lst_env);
+		process_unset(lst_env, tab_arg);
 }
