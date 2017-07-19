@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 10:46:43 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/18 15:36:45 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/19 12:55:56 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,10 @@ void			get_line(t_elem *lst_path, char **env)
 	char		*line;
 	char		**tab_arg;
 	int			ret;
+	t_elem		*lst_env;
 
+	lst_env = new_list();
+	tab_to_list(&lst_env, env);
 	tab_arg = NULL;
 	line = NULL;
 //	view_list(lst_path); //TEST Affichage de la liste de paths: OK LST REMPLIE
@@ -113,7 +116,7 @@ void			get_line(t_elem *lst_path, char **env)
 			tab_arg = ft_strsplit(line, 040);
 		//	view_tab(tab_arg); // Affichage du tableau rempli d'arguments.
 		//	view_list(lst_path);
-			if (check_cmd(parsing_cmd(tab_arg[0]), env, tab_arg) == 0)
+			if (check_cmd(parsing_cmd(tab_arg[0]), lst_env, tab_arg) == 0)
 			{
 				recup_param(lst_path, tab_arg, env);
 				tab_arg = free_tab(tab_arg);
