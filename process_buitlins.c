@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 11:18:07 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/19 12:55:40 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/19 14:08:01 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,9 @@ static void		process_setenv(t_elem *lst_env, char **tab_arg)
 	while (tab_arg[i] && tab_arg[i][0] != '\0')
 	{
 		if (verif_tab(tab_arg[i]) == 1)
-		{
 			tab_arg[i] = ft_strjoin(tab_arg[i], "=");
-			if (verif_list(lst_env, tab_arg[i]) != 1)
-				lst_env = push_back(lst_env, "ENV", tab_arg[i]);
-		}
+		if (verif_list(lst_env, tab_arg[i]) == 0)
+			lst_env = push_back(lst_env, "ENV", tab_arg[i]);
 		i++;
 	}
 	view_list(lst_env);

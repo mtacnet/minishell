@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                       :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 13:11:07 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/19 12:48:54 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/19 14:19:28 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 /*
-** verif_list: Permet de verifier que la liste passée en parametre contient 
+** verif_list: Permet de verifier que la liste passée en parametre contient
 ** ou pas un des elements du tableau qui correspond aux arguments saisies par
 ** l'utilisateur.
 */
@@ -21,29 +21,41 @@
 int		verif_list(t_elem *lst, char *tab_arg)
 {
 	int			i;
+	int			j;
 	size_t		size_arg;
 
 	i = 0;
-	size_arg = ft_strlen(tab_arg);
+	j = 0;
+	size_arg = 0;
+	while (tab_arg[j] != '\0')
+	{
+		if (tab_arg[j] == '=')
+			size_arg = j;
+		j++;
+	}
 	while (lst != NULL)
 	{
 		if (ft_strncmp(lst->content, tab_arg, size_arg) == 0)
-			i++;
+		{
+			free(lst->content);
+			lst->content = ft_strdup(tab_arg);
+			return (1);
+		}
 		lst = lst->next;
 	}
-	if (i > 0)
-		return (1);
-	else
-		return (0);
+	return (0);
 }
 
 int		verif_tab(char *tab_arg)
 {
-	int		size_arg;
+	int		i;
 
-	size_arg = ft_strlen(tab_arg);
-	if (tab_arg[size_arg - 1] == 075)
-		return (0);
-	else
-		return (1);
+	i = 0;
+	while (tab_arg[i] != '\0')
+	{
+		if (tab_arg[i] == '=')
+			return (0);
+		i++;
+	}
+	return (1);
 }
