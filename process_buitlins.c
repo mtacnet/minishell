@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 11:18:07 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/19 16:24:35 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/20 11:39:28 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,9 @@ static void		process_unset(t_elem *lst_env, char **tab_arg)
 	while (tab_arg[i] && tab_arg[i][0] != '\0')
 	{
 		if (modif_list(lst_env, tab_arg[i]) == 1)
-			lst_env = DELETE_ELEM;
+			lst_env = supp_elem(lst_env, tab_arg[i]);
 		i++;
 	}
-	view_list(lst_env);
-
 }
 
 void			process_cd(t_elem *lst_env)

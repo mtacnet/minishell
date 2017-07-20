@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/12 14:30:47 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/19 12:43:08 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/20 11:38:14 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,3 +68,32 @@ t_elem		*push_back(t_elem *lst, char *name, char *content)
 	tmp->next = element;
 	return (lst);
 }
+
+t_elem		*supp_elem(t_elem *lst, char *arg)
+{
+	size_t		i;
+	t_elem		*tmp;
+	t_elem		*prev;
+
+	i = 0;
+	tmp = lst;
+	prev = NULL;
+	while (arg[i] != '\0')
+		i++;
+	if (tmp != NULL && ft_strncmp(tmp->content, arg, i) == 0)
+	{
+		lst = tmp->next;
+		free(tmp);
+		return (NULL);
+	}
+	while (tmp != NULL && ft_strncmp(tmp->content, arg, i) != 0)
+	{
+		 prev = tmp;
+		 tmp = tmp->next;
+	}
+	if (tmp == NULL)
+		return (NULL);;
+	prev->next = tmp->next;
+	free(tmp);
+	return (lst);
+ }

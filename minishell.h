@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 11:27:47 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/19 16:23:44 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/20 11:30:37 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_elem				*new_list(void);
 t_elem				*init_element(t_elem *element);
 t_elem				*push_elem(t_elem *lst, char *name, char *content);
 t_elem				*push_back(t_elem *lst, char *name, char *content);
+t_elem				*supp_elem(t_elem *lst, char *arg);
 void				save_arg(char **tab_arg, t_elem **lst_arg);
 void				freelst(t_elem *lst);
 void				view_list(t_elem *lst);
