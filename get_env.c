@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 10:46:43 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/19 14:18:58 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/21 10:20:54 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,19 +112,27 @@ void			get_line(t_elem *lst_path, char **env)
 		ft_putstr("$> ");
 		while ((ret = get_next_line(1, &line) > 0))
 		{
-			//FAIRE VERIF SI LINE EST NULL OU VIDE EtC.
-			tab_arg = ft_strsplit(line, 040);
-		//	view_tab(tab_arg); // Affichage du tableau rempli d'arguments.
-		//	view_list(lst_path);
-			if (check_cmd(parsing_cmd(tab_arg[0]), lst_env, tab_arg) == 0)
+			if (verif_line(line) == 1)
+				ft_putstr("$> ");
+			else
 			{
-				recup_param(lst_path, tab_arg, env);
-				tab_arg = free_tab(tab_arg);
-				if (tab_arg != NULL)
-					ft_putendl("ERROR");
+				modif_line(&line);
+				tab_arg = ft_strsplit(line, 040);
+				if (tab_arg[0] != NULL)
+				{
+					//	view_tab(tab_arg);
+					//	view_list(lst_path);
+					if (check_cmd(parsing_cmd(tab_arg[0]), lst_env, tab_arg) == 0)
+					{
+						recup_param(lst_path, tab_arg, env);
+						tab_arg = free_tab(tab_arg);
+						if (tab_arg != NULL)
+							ft_putendl("ERROR");
+					}
+				}
+				ft_putstr("$> ");
+				//ft_putendl(line); // Affiche la cmd saisie par l'utilisateur
 			}
-			ft_putstr("$> ");
-			//ft_putendl(line); // Affiche la cmd saisie par l'utilisateur
 		}
 	}
 }

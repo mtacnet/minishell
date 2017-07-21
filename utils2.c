@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 13:11:07 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/19 16:23:46 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/21 10:20:17 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,27 @@ int		verif_tab(char *tab_arg)
 		i++;
 	}
 	return (1);
+}
+
+int		verif_line(char *line)
+{
+	int		i;
+
+	i = 0;
+	if (line && !line[0])
+		return (1);
+	return (0);
+}
+
+void	modif_line(char **line)
+{
+	int		i;
+
+	i = 0;
+	while (line[0][i])
+	{
+		if (line[0][i] == '\t')
+			line[0][i] = 040;
+		i++;
+	}
 }
