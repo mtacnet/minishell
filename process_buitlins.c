@@ -6,15 +6,20 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/18 11:18:07 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/20 11:39:28 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/21 13:44:35 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void		process_f_env(t_elem *lst_env)
+static void		process_f_env(t_elem *lst_env, char **tab_arg)
 {
-	view_list(lst_env);
+	if (tab_arg[1] == NULL)
+		view_list(lst_env);
+	else if (ft_strncmp(tab_arg[1], "-i", 2) == 0)
+		ft_putendl("good flag");
+	else
+		error(1, tab_arg[0], tab_arg[1]);
 }
 
 static void		process_setenv(t_elem *lst_env, char **tab_arg)
@@ -63,7 +68,7 @@ void			process_exit(t_elem *lst_env)
 void			process_env(t_elem *lst_env, int value, char **tab_arg)
 {
 	if (value == 1)
-		process_f_env(lst_env);
+		process_f_env(lst_env, tab_arg);
 	else if (value == 2)
 		process_setenv(lst_env, tab_arg);
 	else if (value == 3)

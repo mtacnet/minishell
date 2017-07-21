@@ -6,7 +6,7 @@
 #    By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/07/10 11:59:24 by mtacnet           #+#    #+#              #
-#    Updated: 2017/07/11 13:54:53 by mtacnet          ###   ########.fr        #
+#    Updated: 2017/07/21 10:32:14 by mtacnet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,3 +18,5 @@ environnement par défaut.
 2) /!\ Gestion des leaks /!\
 
 3) FAIRE GESTION D'ERREURS DANS LA FONCTION RECUP_PARAM
+
+4) SPLIT FONCTIONS ET REMISE A LA NORME

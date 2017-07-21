@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/27 10:46:43 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/07/21 10:20:54 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/07/21 10:27:24 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ void			get_line(t_elem *lst_path, char **env)
 	tab_to_list(&lst_env, env);
 	tab_arg = NULL;
 	line = NULL;
-//	view_list(lst_path); //TEST Affichage de la liste de paths: OK LST REMPLIE
 	while (1)
 	{
 		ft_putstr("$> ");
@@ -120,8 +119,6 @@ void			get_line(t_elem *lst_path, char **env)
 				tab_arg = ft_strsplit(line, 040);
 				if (tab_arg[0] != NULL)
 				{
-					//	view_tab(tab_arg);
-					//	view_list(lst_path);
 					if (check_cmd(parsing_cmd(tab_arg[0]), lst_env, tab_arg) == 0)
 					{
 						recup_param(lst_path, tab_arg, env);
@@ -131,7 +128,6 @@ void			get_line(t_elem *lst_path, char **env)
 					}
 				}
 				ft_putstr("$> ");
-				//ft_putendl(line); // Affiche la cmd saisie par l'utilisateur
 			}
 		}
 	}
