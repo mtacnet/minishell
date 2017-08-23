@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 11:33:04 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/21 15:56:13 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/23 13:50:20 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ void	supp_elem(t_elem **lst, char *arg)
 	i = 0;
 	tmp = (*lst);
 	prev = NULL;
-	while (arg[i] != '\0')
-		i++;
+	i = ft_strlen(arg);
 	if (tmp != NULL && ft_strncmp(tmp->content, arg, i) == 0)
 	{
 		(*lst) = tmp->next;
@@ -91,11 +90,13 @@ void	push_back(t_elem **lst, char *content)
 
 int		modif_list(t_elem **lst, char *arg)
 {
-	int		i;
-	int		len;
+	int			i;
+	int			len;
+	t_elem		*head;
 
 	i = 0;
 	len = 0;
+	head = (*lst);
 	while ((*lst) != NULL)
 	{
 		i = 0;
@@ -109,5 +110,6 @@ int		modif_list(t_elem **lst, char *arg)
 			return (1);
 		(*lst) = (*lst)->next;
 	}
+	(*lst) = head;
 	return (0);
 }

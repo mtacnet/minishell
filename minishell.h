@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 10:54:43 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/21 11:40:15 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/22 16:09:48 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void				cpy_lst(t_elem **lst_dest, t_elem **lst_src);
 
 void				error(int value, char *bad_cmd, char *bad_flag);
 void				get_line(char **env);
-void				process_core(char *line, char **tab_arg, char **env);
+void				process_core(char *line, char **tab_arg, t_elem **lst_env,
+		char **env);
 void				get_elem(t_elem **lst_path, char **env, char *elem);
 void				free_tab(char **tab);
 void				tab_to_list(t_elem **lst, char **tab);
@@ -77,11 +78,13 @@ void				process_env(t_elem **lst_env, int val, char **tab_arg,
 		t_elem **lst_path);
 void				process_tmp_env(char **tab_arg, t_elem **lst_env,
 		t_elem **lst_path);
+void				process_f_env(t_elem **lst_env, char **tab_arg,
+		t_elem **lst_path);
 void				process_bin(char **tab_arg, t_elem **lst_env,
 		t_elem **lst_path);
 void				process_exit(t_elem **lst_env, t_elem **lst_path,
 		char **tab_arg);
 void				process_echo(char **tab);
 void				process_cd(t_elem **lst_env, char **tab_arg);
-
+void				process_unset(t_elem **lst_env, char **tab_arg);
 #endif

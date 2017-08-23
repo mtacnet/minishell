@@ -6,13 +6,13 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 12:33:28 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/22 13:32:14 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/23 13:50:19 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void		process_f_env(t_elem **lst_env, char **tab_arg,
+void		process_f_env(t_elem **lst_env, char **tab_arg,
 		t_elem **lst_path)
 {
 	char	**tmp_tab;
@@ -23,11 +23,7 @@ static void		process_f_env(t_elem **lst_env, char **tab_arg,
 	i = 0;
 	j = 0;
 	if (tab_arg[1] == NULL)
-	{
 		view_list(lst_env);
-		freelst(lst_env);
-		return ;
-	}
 	else if (tab_arg[1])
 	{
 		if (ft_strncmp(tab_arg[1], "-i", 2) == 0)
@@ -54,7 +50,7 @@ void			process_setenv(t_elem **lst_env, char **tab_arg)
 	}
 }
 
-static void		process_unset(t_elem **lst_env, char **tab_arg)
+void		process_unset(t_elem **lst_env, char **tab_arg)
 {
 	int		i;
 
@@ -62,7 +58,9 @@ static void		process_unset(t_elem **lst_env, char **tab_arg)
 	while (tab_arg[i] && tab_arg[i][0] != '\0')
 	{
 		if (modif_list(lst_env, tab_arg[i]) == 1)
-			supp_elem(lst_env, tab_arg[i]);
+		{
+			supp_elem(lst_env, tab_arg[i]);`
+		}
 		i++;
 	}
 }
@@ -73,6 +71,7 @@ void			process_exit(t_elem **lst_env, t_elem **lst_path,
 	freelst(lst_env);
 	freelst(lst_path);
 	free_tab(tab_arg);
+	tab_arg = NULL;
 	if (tab_arg != NULL)
 	{
 		ft_putendl("ERROR MEMORY FREE");

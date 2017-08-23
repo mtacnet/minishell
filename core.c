@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 11:04:46 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/22 13:15:45 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/22 17:43:18 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,23 +55,21 @@ void			get_elem(t_elem **lst_path, char **env, char *elem)
 	ft_strdel(&tmp);
 }
 
-void			process_core(char *line, char **tab_arg, char **env)
+void			process_core(char *line, char **tab_arg, t_elem **lst_env,
+		char **env)
 {
 	int			i;
 	t_elem		*lst_path;
-	t_elem		*lst_env;
 
 	i = 0;
 	lst_path = new_list();
 	get_elem(&lst_path, env, "PATH");
-	lst_env = new_list();
-	tab_to_list(&lst_env, env);
 	modif_line(&line);
 	tab_arg = ft_strsplit(line, 040);
 	if (tab_arg[0] != NULL)
 	{
 		i = parsing_cmd(tab_arg[0]);
-		if (check_cmd(i, &lst_env, tab_arg, &lst_path) == 0)
+		if (check_cmd(i, lst_env, tab_arg, &lst_path) == 0)
 		{
 		/*	go_bin(&lst_path, &lst_env, tab_arg);
 			free_tab(tab_arg);*/
@@ -79,7 +77,6 @@ void			process_core(char *line, char **tab_arg, char **env)
 		}
 		free_tab(tab_arg);
 		freelst(&lst_path);
-		freelst(&lst_env);
 	}
 }
 
@@ -107,10 +104,13 @@ void			get_line(char **env)
 {
 	char		*line;
 	char		**tab_arg;
+	t_elem		*lst_env;
 	int			ret;
 
 	line = NULL;
 	tab_arg = NULL;
+	lst_env = new_list();
+	tab_to_list(&lst_env, env);
 	ft_putstr("$> ");
 	while (1)
 	{
@@ -119,7 +119,7 @@ void			get_line(char **env)
 			if (verif_line(line) == 1)
 				ft_putstr("$> ");
 			else
-				process_core(line, tab_arg, env);
+				process_core(line, tab_arg, &lst_env, env);
 			ft_putstr("$> ");
 			free(line);
 		}

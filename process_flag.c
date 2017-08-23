@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 12:42:52 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/22 13:29:45 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/22 13:48:02 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ void			process_bin(char **tab_arg, t_elem **lst_env, t_elem **lst_path)
 		i++;
 		(*lst_env) = (*lst_env)->next;
 	}
+	(*lst_env) = head;
 	tmp_env = list_to_tab(lst_env);
 	recup_param(lst_path, tab_arg, tmp_env);
+	free(tmp_env);
 }
 
 void			process_flag_i(t_elem **lst_path, char **tab_arg)
