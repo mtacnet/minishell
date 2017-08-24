@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:29:13 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/22 13:29:53 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/24 16:48:17 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static void		go_bin2(t_elem **lst_path, t_elem **lst_env, char **tab_arg)
 	tmp_env = NULL;
 	tmp_env = list_to_tab(lst_env);
 	recup_param(lst_path, tab_arg, tmp_env);
-	free_tab(tmp_env);
 }
 
 void			go_bin(t_elem **lst_path, t_elem **lst_env, char **tab_arg)
@@ -45,16 +44,17 @@ void			go_bin(t_elem **lst_path, t_elem **lst_env, char **tab_arg)
 
 	i = 0;
 	head = (*lst_env);
-	while ((*lst_env) != NULL)
+	while (head != NULL)
 	{
-		if (ft_strncmp((*lst_env)->content, "PATH=", 5) == 0)
+		if (ft_strncmp(head->content, "PATH=", 5) == 0)
 			i++;
-		(*lst_env) = (*lst_env)->next;
+		head = head->next;
 	}
-	(*lst_env) = head;
 	if (i == 0)
 	{
 		error(2, tab_arg[0], NULL);
+		freelst(lst_env);
+		freelst(lst_path);
 		return ;
 	}
 	else

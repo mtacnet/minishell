@@ -6,13 +6,13 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 12:10:58 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/21 15:32:02 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/24 12:47:20 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		check_cmd(int val, t_elem **lst_env, char **tab_arg, t_elem **lst_path)
+void	check_cmd(int val, t_elem **lst_env, char **tab_arg, t_elem **lst_path)
 {
 	if (val != 0)
 	{
@@ -24,10 +24,10 @@ int		check_cmd(int val, t_elem **lst_env, char **tab_arg, t_elem **lst_path)
 			process_echo(tab_arg);
 		if (val == 6)
 			process_exit(lst_env, lst_path, tab_arg);
-		return (1);
+		return ;
 	}
 	else
-		return (0);
+		return ;
 }
 
 int		parsing_cmd(char *command)

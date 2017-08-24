@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 12:42:52 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/23 14:16:02 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/24 12:43:55 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,9 @@ static void		process_tmp_bin(char **tab_arg, t_elem **cpy_env,
 
 	tmp_env = NULL;
 	tmp_env = list_to_tab(cpy_env);
-	j = parsing_cmd(tab_arg[i]);
-	if (check_cmd(j, cpy_env, &tab_arg[i], lst_path) == 0)
+	if ((j = parsing_cmd(tab_arg[i])) != 0)
+		check_cmd(j, cpy_env, &tab_arg[i], lst_path);
+	else
 		recup_param(lst_path, &tab_arg[i], tmp_env);
 	free(tmp_env);
 }

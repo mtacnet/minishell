@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 10:54:43 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/23 15:08:29 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/24 14:07:14 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void				view_tab(char **tab);
 int					check_access(char *path);
 int					verif_line(char *line);
 int					parsing_cmd(char *command);
-int					check_cmd(int val, t_elem **lst_env, char **tab_arg,
+void				check_cmd(int val, t_elem **lst_env, char **tab_arg,
 		t_elem **lst_path);
 char				**list_to_tab(t_elem **lst);
 int					verif_tab(char *tab);
