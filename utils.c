@@ -34,6 +34,7 @@ int		verif_list(t_elem **lst, char *tab_arg)
 		{
 			ft_strdel(&(*lst)->content);
 			(*lst)->content = ft_strdup(tab_arg);
+			(*lst) = head;
 			return (1);
 		}
 		(*lst) = (*lst)->next;

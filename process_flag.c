@@ -91,7 +91,10 @@ static void		process_tmp_bin(char **tab_arg, t_elem **cpy_env,
 	if ((j = parsing_cmd(tab_arg[i])) != 0)
 		check_cmd(j, cpy_env, &tab_arg[i], lst_path);
 	else
+	{
+		ft_putnbr(i);
 		recup_param(lst_path, &tab_arg[i], tmp_env);
+	}
 	free(tmp_env);
 }
 
@@ -112,16 +115,12 @@ void			process_tmp_env(char **tab_arg, t_elem **lst_env, t_elem **lst_path)
 		if (ft_strchr(tab_arg[i], '=') != NULL &&
 				verif_list(&cpy_env, tab_arg[i]) == 0)
 			push_back(&cpy_env, tab_arg[i]);
-		if (ft_strchr(tab_arg[i], '=') == NULL)
-			j = i;
+		if (ft_strchr(tab_arg[i], '=') == NULL && j == 0)
+			 j = i;
 		i++;
 	}
 	if (j == 0)
-	{
 		view_list(&cpy_env);
-		freelst(&cpy_env);
-		return ;
-	}
 	else
 		process_tmp_bin(tab_arg, &cpy_env, lst_path, j);
 	freelst(&cpy_env);
