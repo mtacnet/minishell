@@ -68,10 +68,10 @@ void			process_core(char *line, char **tab_arg, t_elem **lst_env,
 	tab_arg = ft_strsplit(line, 040);
 	if (tab_arg[0] != NULL)
 	{
-	/*	if ((i = parsing_cmd(tab_arg[0])) != 0)
+		if ((i = parsing_cmd(tab_arg[0])) != 0)
 			check_cmd(i, lst_env, tab_arg, &lst_path);
-		else*/
-		go_bin(&lst_path, lst_env, tab_arg);
+		else
+			go_bin(&lst_path, lst_env, tab_arg);
 		freelst(&lst_path);
 		free_tab(tab_arg);
 		return ;

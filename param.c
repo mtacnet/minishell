@@ -80,10 +80,7 @@ void			go_bin(t_elem **lst_path, t_elem **lst_env, char **tab_arg)
 		i++;
 	}
 	if (j == 0)
-	{
 		error(2, tab_arg[0], NULL);
-		return ;
-	}
 	else
 		recup_param(lst_path, tab_arg, tmp_env);
 	free(tmp_env);
