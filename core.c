@@ -72,7 +72,9 @@ void			process_core(char *line, char **tab_arg, t_elem **lst_env,
 			check_cmd(i, lst_env, tab_arg, &lst_path);
 		else*/
 		go_bin(&lst_path, lst_env, tab_arg);
+		freelst(&lst_path);
 		free_tab(tab_arg);
+		return ;
 	}
 }
 
