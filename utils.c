@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 11:09:24 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/28 12:15:00 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/28 15:55:35 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		verif_line(char *line)
 	int		i;
 
 	i = 0;
-	if (line && !line[0])
+	if (line == NULL && !line[0])
 		return (1);
 	return (0);
 }

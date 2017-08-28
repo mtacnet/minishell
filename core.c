@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 11:04:46 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/28 12:12:35 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/28 15:25:46 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void			get_line(char **env)
 	ft_putstr("$> ");
 	while (1)
 	{
-		while ((ret = get_next_line(1, &line) > 0))
+		while ((ret = get_next_line(1, &line)) > 0)
 		{
 			if (verif_line(line) == 1)
 				ft_putstr("$> ");

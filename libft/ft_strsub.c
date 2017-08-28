@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/13 13:56:42 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/01/28 13:35:49 by mtacnet          ###   ########.fr       */
+/*   Created: 2017/08/28 14:58:36 by mtacnet           #+#    #+#             */
+/*   Updated: 2017/08/28 14:59:03 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,15 @@
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char			*ret;
-	unsigned int	i;
+	char		*result;
+	size_t		i;
 
-	if (!s)
+	if (!s || start > ft_strlen(s))
 		return (NULL);
-	if (s)
-	{
-		if ((ret = ft_strnew(len)) == NULL)
-			return (NULL);
-		i = -1;
-		while (++i < len)
-			ret[i] = s[start + i];
-		ret[i] = '\0';
-		return (ret);
-	}
-	return (NULL);
+	if (!(result = ft_strnew(len)))
+		return (NULL);
+	i = 0;
+	while (i < len)
+		result[i++] = *(s++ + start);
+	return (result);
 }

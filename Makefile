@@ -6,7 +6,7 @@
 #    By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/01 11:47:50 by mtacnet           #+#    #+#              #
-#    Updated: 2017/08/16 11:52:20 by nbouchin         ###   ########.fr        #
+#    Updated: 2017/08/28 15:55:07 by mtacnet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,15 @@ NAME		= minishell
 
 CC			= gcc
 
-CFLAGS		= -Wall -Wextra -Werror -I. -g
+CFLAGS		= -Wall -Wextra -Werror -I.
 
 RM			= rm -rf
 
 LIBFT		= -L./libft -lft
 
-SRCS		= *.c
+SRCS		= cmd.c core.c error.c init_list.c list.c main.c param.c tab.c \
+			  process_builtins.c process_builtins2.c process_flag.c utils.c \
+			  utils2.c utils_cd.c utils_cd2.c
 
 OBJS		= $(SRCS:.c=.o)
 
