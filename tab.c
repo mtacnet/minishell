@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 11:30:32 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/22 13:27:42 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/28 12:15:56 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,6 @@ void	supp_elem_tab(char **tab, int value)
 	{
 		while (j < i)
 		{
-			//ft_strdel(&(tab[j]))
-	//		tab[j] = ft_strdup(tab[j + 1]);
 			tab[j] = tab[j + 1];
 			j++;
 		}
@@ -109,19 +107,3 @@ void	free_tab(char **tab)
 	free(tab);
 	tab = NULL;
 }
-
-/*void	free_tab(char **tab)
-{
-	int		i;
-
-	i = 0;
-	while (tab[i] && tab[i][0] != '\0')
-		i++;
-	while (i >= 0)
-	{
-		ft_strdel(&tab[i]);
-		i--;
-	}
-	free(tab);
-	tab = NULL;
-}*/

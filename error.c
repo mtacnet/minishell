@@ -6,11 +6,17 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 13:36:54 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/08 13:50:20 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/28 12:22:54 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void		cd_error2(char *bad_cmd)
+{
+	ft_putstr_fd(bad_cmd, 2);
+	ft_putstr_fd(": HOME not set\n", 2);
+}
 
 static void		cd_error(char *bad_cmd)
 {
@@ -44,4 +50,6 @@ void			error(int value, char *bad_cmd, char *bad_flag)
 		error_cmd(bad_cmd);
 	if (value == 3)
 		cd_error(bad_cmd);
+	if (value == 4)
+		cd_error2(bad_cmd);
 }

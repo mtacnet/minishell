@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/19 14:08:46 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/23 16:41:07 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/28 12:24:58 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	process_cd(t_elem **lst_env, char **tab_arg)
 			if ((path_access = check_access(tmp)) == 1)
 				change_dir(tmp, lst_env);
 			else
-				error(1, tab_arg[0], tab_arg[1]);
+				error(4, "cd", NULL);
 		}
 		else if (tab_arg[1][0] == '-')
 		{
@@ -57,7 +57,7 @@ void	process_cd(t_elem **lst_env, char **tab_arg)
 			go_path(lst_env, tab_arg);
 	}
 	else
-		process_cd2(lst_env, tab_arg);
+		process_cd2(lst_env);
 	ft_strdel(&tmp);
 	ft_strdel(&tmp2);
 }

@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 10:54:43 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/24 14:07:14 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/28 12:24:30 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void				supp_elem_tab(char **tab, int value);
 void				change_dir(char *path, t_elem **lst_env);
 void				add_old_pwd(t_elem **lst_env);
 void				go_path(t_elem **lst_env, char **tab);
-void				process_cd2(t_elem **lst_env, char **tab_arg);
+void				process_cd2(t_elem **lst_env);
 void				go_bin(t_elem **lst_path, t_elem **lst_env, char **tab_arg);
 void				view_tab(char **tab);
 int					check_access(char *path);

@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:29:13 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/24 16:48:17 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/28 12:14:32 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,41 +27,6 @@ int				check_access(char *path)
 	else
 		return (0);
 }
-
-/*static void		go_bin2(t_elem **lst_path, t_elem **lst_env, char **tab_arg)
-{
-	char	**tmp_env;
-
-	tmp_env = NULL;
-	tmp_env = list_to_tab(lst_env);
-	recup_param(lst_path, tab_arg, tmp_env);
-	free_tab(tmp_env);
-}
-
-void			go_bin(t_elem **lst_path, t_elem **lst_env, char **tab_arg)
-{
-	int			i;
-	t_elem		*head;
-
-	i = 0;
-	head = (*lst_env);
-	while ((*lst_env) != NULL)
-	{
-		if (ft_strncmp((*lst_env)->content, "PATH=", 5) == 0)
-			i++;
-		(*lst_env) = (*lst_env)->next;
-	}
-	(*lst_env) = head;
-	if (i == 0)
-	{
-//		error(2, tab_arg[0], NULL);
-//		freelst(lst_env);
-//		freelst(lst_path);
-		return ;
-	}
-	else
-		go_bin2(lst_path, lst_env, tab_arg);
-}*/
 
 void			go_bin(t_elem **lst_path, t_elem **lst_env, char **tab_arg)
 {
@@ -149,5 +114,4 @@ void			recup_param(t_elem **lst_path, char **tab_arg, char **env)
 	(*lst_path) = head;
 	if (k != 1)
 		error(2, tab_arg[0], NULL);
-//	freelst(lst_path);
 }

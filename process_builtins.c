@@ -6,13 +6,13 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 12:33:28 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/23 14:15:28 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/28 12:12:54 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void		process_f_env(t_elem **lst_env, char **tab_arg,
+void			process_f_env(t_elem **lst_env, char **tab_arg,
 		t_elem **lst_path)
 {
 	char	**tmp_tab;
@@ -50,7 +50,7 @@ void			process_setenv(t_elem **lst_env, char **tab_arg)
 	}
 }
 
-void		process_unset(t_elem **lst_env, char **tab_arg)
+void			process_unset(t_elem **lst_env, char **tab_arg)
 {
 	int		i;
 

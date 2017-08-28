@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 12:42:52 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/24 12:43:55 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/28 12:16:21 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,35 +51,6 @@ void			process_flag_i(t_elem **lst_path, char **tab_arg)
 	free_tab(tmp_tab);
 }
 
-/*static void		process_tmp_bin(char **tab_arg, t_elem **cpy_env,
-		t_elem **lst_path, int i)
-{
-	int		j;
-	int		k;
-	char	**tmp_env;
-	t_elem	*head;
-
-	j = 0;
-	k = 0;
-	tmp_env = NULL;
-	head = (*cpy_env);
-	while (j < i)
-	{
-		if (ft_strchr(tab_arg[1], '=') != NULL)
-			supp_elem_tab(tab_arg, 0);
-		j++;
-	}
-	while ((*cpy_env) != NULL)
-	{
-		k++;
-		(*cpy_env) = (*cpy_env)->next;
-	}
-	(*cpy_env) = head;
-	tmp_env = list_to_tab(cpy_env);
-	if (check_cmd(parsing_cmd(tab_arg[0]), cpy_env, tab_arg, lst_path) == 0)
-		recup_param(lst_path, tab_arg, tmp_env);
-}*/
-
 static void		process_tmp_bin(char **tab_arg, t_elem **cpy_env,
 		t_elem **lst_path, int i)
 {
@@ -91,14 +62,12 @@ static void		process_tmp_bin(char **tab_arg, t_elem **cpy_env,
 	if ((j = parsing_cmd(tab_arg[i])) != 0)
 		check_cmd(j, cpy_env, &tab_arg[i], lst_path);
 	else
-	{
-		ft_putnbr(i);
 		recup_param(lst_path, &tab_arg[i], tmp_env);
-	}
 	free(tmp_env);
 }
 
-void			process_tmp_env(char **tab_arg, t_elem **lst_env, t_elem **lst_path)
+void			process_tmp_env(char **tab_arg, t_elem **lst_env,
+		t_elem **lst_path)
 {
 	t_elem		*cpy_env;
 	int			i;
@@ -116,7 +85,7 @@ void			process_tmp_env(char **tab_arg, t_elem **lst_env, t_elem **lst_path)
 				verif_list(&cpy_env, tab_arg[i]) == 0)
 			push_back(&cpy_env, tab_arg[i]);
 		if (ft_strchr(tab_arg[i], '=') == NULL && j == 0)
-			 j = i;
+			j = i;
 		i++;
 	}
 	if (j == 0)
