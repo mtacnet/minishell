@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 10:54:29 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/22 13:46:30 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/28 13:47:54 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,22 @@
 static char		**set_env(void)
 {
 	char	*tmp;
+	char	*tmp1;
 	char	**tab;
 	int		i;
 
 	i = 0;
 	tmp = getcwd(NULL, 0);
+	tmp1 = ft_strjoin("PWD=", tmp);
 	tab = ft_memalloc(sizeof(*tab) * (3 + 1));
-	if (tmp == NULL || tab == NULL)
+	if (tmp == NULL || tab == NULL || tmp1 == NULL)
 		exit(EXIT_FAILURE);
-	tab[0] = tmp;
+	tab[0] = tmp1;
 	tab[1] = "SHLVL=1";
 	tab[2] = "_=/usr/bin/env";
 	tab[3] = "\0";
+	ft_strdel(&tmp1);
+	ft_strdel(&tmp);
 	return (tab);
 }
 
