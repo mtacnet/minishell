@@ -6,7 +6,7 @@
 /*   By: mtacnet <mtacnet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/07/21 13:36:54 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/28 12:22:54 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/29 14:02:12 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,6 @@ void			error(int value, char *bad_cmd, char *bad_flag)
 		cd_error(bad_cmd);
 	if (value == 4)
 		cd_error2(bad_cmd);
+	if (value == 5)
+		env_error(bad_cmd, bad_flag);
 }

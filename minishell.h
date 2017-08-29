@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 10:54:43 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/28 15:55:47 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/29 14:01:40 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ char				*go_old_pwd(t_elem **lst_env);
 
 void				process_env(t_elem **lst_env, int val, char **tab_arg,
 		t_elem **lst_path);
+void				env_error(char *bad_cmd, char *bad_flag);
 void				process_tmp_env(char **tab_arg, t_elem **lst_env,
 		t_elem **lst_path);
 void				process_f_env(t_elem **lst_env, char **tab_arg,

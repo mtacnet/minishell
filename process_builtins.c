@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 12:33:28 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/29 13:29:52 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/29 13:59:21 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,13 @@ void			process_f_env(t_elem **lst_env, char **tab_arg,
 		view_list(lst_env);
 	else if (tab_arg[1])
 	{
-		if (ft_strncmp(tab_arg[1], "-i", 2) == 0)
-			process_flag_i(lst_path, tab_arg);
+		if (ft_strchr(tab_arg[1], '-') != NULL)
+		{
+			if (ft_strncmp(tab_arg[1], "-i", 2) == 0)
+				process_flag_i(lst_path, tab_arg);
+			else
+				error(5, "env", tab_arg[1]);
+		}
 		else if (ft_strchr(tab_arg[1], '=') != NULL)
 			process_tmp_env(tab_arg, lst_env, lst_path);
 		else

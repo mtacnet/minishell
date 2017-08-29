@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 11:09:24 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/29 13:29:54 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/29 14:34:56 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,10 @@ int		verif_list(t_elem **lst, char *tab_arg)
 	head = (*lst);
 	while ((*lst) != NULL)
 	{
-		i = 0;
-		while ((*lst)->content[i])
-		{
+		i = -1;
+		while ((*lst)->content[++i])
 			if ((*lst)->content[i] == '=')
 				len = i;
-			i++;
-		}
 		if (ft_strncmp((*lst)->content, tab_arg, len) == 0)
 		{
 			ft_strdel(&(*lst)->content);

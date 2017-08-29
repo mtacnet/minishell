@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 11:04:46 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/29 11:45:55 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/29 17:57:41 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,15 @@ void			process_core(char *line, char **tab_arg, t_elem **lst_env,
 	tab_arg = ft_strsplit(line, 040);
 	if (tab_arg[0] != NULL)
 	{
-		if ((i = parsing_cmd(tab_arg[0])) != 0)
+		if (access(tab_arg[0], F_OK | X_OK) == 0)
+			if_path(tab_arg[0], tab_arg, env);
+		else if ((i = parsing_cmd(tab_arg[0])) != 0)
 			check_cmd(i, lst_env, tab_arg, &lst_path);
 		else
 			go_bin(&lst_path, lst_env, tab_arg);
-		freelst(&lst_path);
-		free_tab(tab_arg);
 	}
-	else
-	{
-		free_tab(tab_arg);
-		freelst(&lst_path);
-	}
+	freelst(&lst_path);
+	free_tab(tab_arg);
 }
 
 void			if_path(char *valid_path, char **tab_arg, char **env)
@@ -87,6 +84,8 @@ void			if_path(char *valid_path, char **tab_arg, char **env)
 	int			status;
 
 	child_pid = fork();
+	view_tab(env);
+	ft_putendl("");
 	if (child_pid == -1)
 	{
 		ft_putstr_fd("ERROR WITH CHILD PROCESSUS", 2);
