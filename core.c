@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 11:04:46 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/28 15:25:46 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/29 11:45:55 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,11 @@ void			process_core(char *line, char **tab_arg, t_elem **lst_env,
 			go_bin(&lst_path, lst_env, tab_arg);
 		freelst(&lst_path);
 		free_tab(tab_arg);
-		return ;
+	}
+	else
+	{
+		free_tab(tab_arg);
+		freelst(&lst_path);
 	}
 }
 
@@ -111,7 +115,7 @@ void			get_line(char **env)
 	ft_putstr("$> ");
 	while (1)
 	{
-		while ((ret = get_next_line(1, &line)) > 0)
+		while ((ret = get_next_line(0, &line)) > 0)
 		{
 			if (verif_line(line) == 1)
 				ft_putstr("$> ");
