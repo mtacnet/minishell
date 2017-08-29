@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 14:29:13 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/28 12:14:32 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/29 13:16:19 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,29 +51,35 @@ void			go_bin(t_elem **lst_path, t_elem **lst_env, char **tab_arg)
 	free(tmp_env);
 }
 
+static int		process_concat(t_elem **lst_path, char **tab_arg)
+{
+	char	*swap;
+
+	swap = NULL;
+	swap = ft_strdup((*lst_path)->content);
+	ft_strdel(&((*lst_path)->content));
+	(*lst_path)->content = ft_strnew(ft_strlen(swap) + 1);
+	(*lst_path)->content = ft_strcpy((*lst_path)->content, swap);
+	(*lst_path)->content = ft_strcat((*lst_path)->content, "/");
+	ft_strdel(&(swap));
+	swap = ft_strdup((*lst_path)->content);
+	ft_strdel(&((*lst_path)->content));
+	(*lst_path)->content = ft_strnew(ft_strlen(swap) + ft_strlen(tab_arg[0]));
+	(*lst_path)->content = ft_strcpy((*lst_path)->content, swap);
+	(*lst_path)->content = ft_strcat((*lst_path)->content, tab_arg[0]);
+	ft_strdel(&swap);
+	return (check_access((*lst_path)->content));
+}
+
 static int		process_path(t_elem **lst_path, char **tab_arg, char **env,
 		int i)
 {
 	int		path_access;
-	char	*swap;
 
 	path_access = 0;
-	swap = NULL;
 	if (!(ft_strchr(tab_arg[0], '/')))
 	{
-		swap = ft_strdup((*lst_path)->content);
-		ft_strdel(&((*lst_path)->content));
-		(*lst_path)->content = ft_strnew(ft_strlen(swap) + 1);
-		(*lst_path)->content = ft_strcpy((*lst_path)->content, swap);
-		(*lst_path)->content = ft_strcat((*lst_path)->content, "/");
-		ft_strdel(&(swap));
-		swap = ft_strdup((*lst_path)->content);
-		ft_strdel(&((*lst_path)->content));
-		(*lst_path)->content = ft_strnew(ft_strlen(swap) + ft_strlen(tab_arg[0]));
-		(*lst_path)->content = ft_strcpy((*lst_path)->content, swap);
-		(*lst_path)->content = ft_strcat((*lst_path)->content, tab_arg[0]);
-		ft_strdel(&swap);
-		path_access = check_access((*lst_path)->content);
+		path_access = process_concat(lst_path, tab_arg);
 		if (path_access == 1)
 		{
 			if_path((*lst_path)->content, tab_arg, env);
