@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 11:04:46 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/29 17:57:41 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/30 12:34:34 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,6 @@ void			if_path(char *valid_path, char **tab_arg, char **env)
 	int			status;
 
 	child_pid = fork();
-	view_tab(env);
-	ft_putendl("");
 	if (child_pid == -1)
 	{
 		ft_putstr_fd("ERROR WITH CHILD PROCESSUS", 2);

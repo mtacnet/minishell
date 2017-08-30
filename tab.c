@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 11:30:32 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/28 12:15:56 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/30 12:16:43 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	free_tab(char **tab)
 	i = 0;
 	while (tab[i])
 	{
-		if (tab[i][0])
+		if (tab[i] != NULL)
 		{
 			ft_strdel(&(tab[i]));
 			i++;

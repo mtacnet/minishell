@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 12:42:52 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/28 12:16:21 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/30 12:32:45 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void			process_flag_i(t_elem **lst_path, char **tab_arg)
 	recup_param(lst_path, tmp_tab, NULL);
 	freelst(&tmp_lst);
 	freelst(lst_path);
-	free_tab(tmp_tab);
+	free(tmp_tab);
 }
 
 static void		process_tmp_bin(char **tab_arg, t_elem **cpy_env,
