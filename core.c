@@ -6,7 +6,7 @@
 /*   By: mtacnet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/18 11:04:46 by mtacnet           #+#    #+#             */
-/*   Updated: 2017/08/30 12:34:34 by mtacnet          ###   ########.fr       */
+/*   Updated: 2017/08/31 11:37:01 by mtacnet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,11 @@ void			get_elem(t_elem **lst_path, char **env, char *elem)
 void			process_core(char *line, char **tab_arg, t_elem **lst_env,
 		char **env)
 {
+	char	**tab;
 	int		i;
 	t_elem	*lst_path;
 
+	tab = NULL;
 	i = 0;
 	lst_path = new_list();
 	get_elem(&lst_path, env, "PATH");
@@ -68,7 +70,12 @@ void			process_core(char *line, char **tab_arg, t_elem **lst_env,
 	if (tab_arg[0] != NULL)
 	{
 		if (access(tab_arg[0], F_OK | X_OK) == 0)
-			if_path(tab_arg[0], tab_arg, env);
+		{
+			tab = list_to_tab(lst_env);
+			if_path(tab_arg[0], tab_arg, tab);
+			if (tab != NULL)
+				free(tab);
+		}
 		else if ((i = parsing_cmd(tab_arg[0])) != 0)
 			check_cmd(i, lst_env, tab_arg, &lst_path);
 		else
