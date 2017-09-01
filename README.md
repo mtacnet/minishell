@@ -12,7 +12,7 @@ Vous trouverez à votre disposition le sujet du projet sous format PDF dans le r
 
 Comme d'habitude, toutes les fonctions présentes ont été prototypées dans le fichier "minishell.h" et nous utilisons egalement notre Libft mise à jour avec les fonctions précédemment utilisées au cours des derniers projets.
 
-Dans ce projet, j'ai réalisé comme demandé dans le sujet, une série de builtins avec certaines options, voici la liste:
+Dans ce projet, j'ai réalisé comme demandé dans le sujet, une série de builtins (basé principalement sur "sh") avec certaines options... voici la liste:
 
 + env
   - -i (Démarrer  avec  un  environnement  vide, et non pas avec l'environnement hérité par env. cf: man env)
