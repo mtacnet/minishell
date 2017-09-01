@@ -18,8 +18,8 @@ Dans ce projet, j'ai réalisé comme demandé dans le sujet, une série de built
   + -i (Démarrer  avec  un  environnement  vide, et non pas avec l'environnement hérité par env. cf: man env)
 
 - cd
-  + . (Affiche le répertoire courant)
-  + ~ (Change de répertoire en fonction de l'attribut de la variable d'environnement "HOME")
+  + "." (Affiche le répertoire courant)
+  + "~" (Change de répertoire en fonction de l'attribut de la variable d'environnement "HOME")
   + - (Reviens dans le répertoire précédent (contenu dans la variable d'environnement "OLDPWD")
   + Absolute/path
   + Relative/path
